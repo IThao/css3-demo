@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+*{margin:0; padding:0;}
+div{width:100px; height:100px; background:red; position:absolute; top:0; left:0;}
+</style>
+<script>
+window.onload=function(){
+	var oBox = document.getElementById('box');
+	var left = 0;
+	var iSpeed = 20;
+	oBox.onmouseover=function(){
+		setInterval(function(){
+			iSpeed*=0.95;
+			left+=iSpeed;
+			oBox.style.left = left+'px';
+		},30);
+	};
+};
+</script>
+</head>
+
+<body>
+<div id="box"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

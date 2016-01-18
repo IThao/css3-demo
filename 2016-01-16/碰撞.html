@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+*{margin:0; padding:0;}
+div{width:100px; height:100px; background:#ccc; position:absolute; top:0; left:200px;}
+</style>
+<script>
+window.onload=function(){
+	var oBox = document.getElementById('box');
+	var iSpeedX = 6;
+	var iSpeedY = 20;
+	var timer = null;
+	timer = setInterval(function(){
+		iSpeedY+=3;
+		
+		var l = oBox.offsetLeft+iSpeedX;
+		var t = oBox.offsetTop+iSpeedY;
+		if(t>=document.documentElement.clientHeight-oBox.offsetHeight){
+			t=document.documentElement.clientHeight-oBox.offsetHeight;
+			iSpeedY*=-0.85;
+			iSpeedX*=0.85;
+		}
+		if(l>=document.documentElement.clientWidth-oBox.offsetWidth){
+			iSpeedX*=-0.85;
+			iSpeedY*=0.85;
+		}
+		if(t<=0){
+			iSpeedY*=-0.85;
+			iSpeedX*=0.85;
+		}
+		if(l<=0){
+			iSpeedX*=-0.85;
+			iSpeedY*=0.85;
+		}
+		
+		if(Math.abs(iSpeedX)<1)iSpeedX=0;
+		if(Math.abs(iSpeedY)<1)iSpeedY=0;
+		
+		oBox.style.left = l+'px';
+		oBox.style.top = t+'px';
+		if(Math.round(iSpeedX)==0&&Math.round(iSpeedY)==0&&t==document.documentElement.clientHeight-oBox.offsetHeight){
+			clearInterval(timer);
+		}
+	},30);
+};
+</script>
+</head>
+
+<body>
+<div id="box"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

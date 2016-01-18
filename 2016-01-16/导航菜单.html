@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+*{margin:0; padding:0; list-style:none;}
+ul{overflow:hidden; width:408px; margin:100px auto; background:#ccc; position:relative; top:0; left:0;}
+ul li{float:left; width:100px; height:30px; line-height:30px; text-align:center; border:1px solid #000; z-index:2; position:relative; top:0; left:0;}
+ul .box{background:yellow; position:absolute; top:0; left:0; z-index:1;}
+</style>
+<script src="menu.js"></script>
+<script>
+window.onload=function(){
+	var oUl = document.getElementsByTagName('ul')[0];
+	var aLi = oUl.children;
+	var oBox = aLi[aLi.length-1];
+	var iNow = 0;
+	for(var i=0;i<aLi.length;i++){
+		(function(index){
+			aLi[i].onclick=function(){
+				iNow = index;
+			};
+			aLi[i].onmouseover=function(){
+				startMove(oBox,this.offsetLeft);
+			};
+			aLi[i].onmouseout=function(){
+				startMove(oBox,iNow*aLi[0].offsetWidth);
+			};
+		})(i);
+	}
+};
+</script>
+</head>
+
+<body>
+<ul>
+	<li>首页</li>
+	<li>产品列表</li>
+	<li>产品介绍</li>
+	<li>关于我们</li>
+	<li class="box"></li>
+</ul>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
